@@ -77,11 +77,11 @@ public class LinkQueue<T> implements Serializable {
 	// 出队
 	public T poll() {
 		Node oldFront = front;
-		if (front.next != null) {
+		if (!isEmpty()) {
 			front = front.next; // 指向下一个节点
+			oldFront.next = null;
+			size--;
 		}
-		oldFront.next = null;
-		size--;
 		return oldFront.data;
 
 	}
